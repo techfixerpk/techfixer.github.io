@@ -17,7 +17,7 @@
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
         <image:image>
-            <image:loc>https://techfixer.pk/assets/your-pic.png</image:loc>
+            <image:loc>https://techfixerpk.github.io/your-pic.png</image:loc>
             <image:title>Fahad Umar Malik - IBM Certified Architect</image:title>
             <image:caption>Global Tech Solutions &amp; System Architecture</image:caption>
         </image:image>
@@ -57,5 +57,6 @@
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
+
 
 </urlset>
