@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUILD | SOFTWARE ENGINEERING</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
+        
+        :root { --neon: #00f2ff; --code-purple: #bd93f9; --bg: #020202; }
+        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; }
+        .boss-font { font-family: 'Syncopate', sans-serif; }
+
+        /* Code Terminal Aesthetic */
+        .code-window {
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .window-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        
+        .syntax-1 { color: #ff79c6; } /* Functions */
+        .syntax-2 { color: #50fa7b; } /* Strings */
+        .syntax-3 { color: #8be9fd; } /* Variables */
+
+        /* Feature Hover */
+        .build-card {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s;
+        }
+        .build-card:hover {
+            background: rgba(189, 147, 249, 0.05);
+            padding-left: 20px;
+            border-bottom-color: var(--code-purple);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-[150] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-5 flex justify-between items-center">
+        <a href="services.html" class="boss-font text-[9px] text-purple-400 flex items-center gap-2 hover:tracking-widest transition-all">
+            <i class="fas fa-arrow-left"></i> RETURN_TO_SYSTEMS
+        </a>
+        <div class="font-mono text-[9px] text-zinc-500 uppercase">Dev_Env: <span class="text-purple-400">Production_Ready</span></div>
+    </nav>
+
+    <main class="pt-40 pb-32 container mx-auto px-6 max-w-7xl">
+        
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            
+            <div>
+                <header class="mb-12">
+                    <h1 class="boss-font text-6xl md:text-8xl italic font-black text-transparent" style="-webkit-text-stroke: 1px var(--code-purple);">BUILD.</h1>
+                    <p class="text-zinc-400 text-lg mt-6 leading-relaxed">We don't just design websites; we engineer digital assets. From robust backend architectures to high-performance frontend interfaces, we build to scale.</p>
+                </header>
+
+                <div class="space-y-2">
+                    <div class="build-card py-6">
+                        <h3 class="boss-font text-xs text-purple-400 mb-2">01_Web_Architectures</h3>
+                        <p class="text-zinc-500 text-sm">Full-stack deployments using React, Next.js, and Node.js for ultra-fast user experiences.</p>
+                    </div>
+                    <div class="build-card py-6">
+                        <h3 class="boss-font text-xs text-purple-400 mb-2">02_Custom_Software</h3>
+                        <p class="text-zinc-500 text-sm">Tailor-made internal tools and SaaS products designed to automate complex business workflows.</p>
+                    </div>
+                    <div class="build-card py-6">
+                        <h3 class="boss-font text-xs text-purple-400 mb-2">03_API_Ecosystems</h3>
+                        <p class="text-zinc-500 text-sm">Seamless integrations and secure API development to connect your business with the world.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-window overflow-hidden">
+                <div class="bg-[#1a1a1a] p-4 flex items-center border-b border-white/5">
+                    <span class="window-dot bg-red-500"></span>
+                    <span class="window-dot bg-yellow-500"></span>
+                    <span class="window-dot bg-green-500"></span>
+                    <span class="ml-4 font-mono text-[10px] text-zinc-500">tech_fixer_engine.js</span>
+                </div>
+                <div class="p-8 font-mono text-sm leading-loose">
+                    <p><span class="syntax-1">class</span> <span class="syntax-3">DigitalAsset</span> {</p>
+                    <p class="pl-6"><span class="syntax-1">constructor</span>(client) {</p>
+                    <p class="pl-12"><span class="syntax-3">this</span>.vision = client.vision;</p>
+                    <p class="pl-12"><span class="syntax-3">this</span>.stack = [<span class="syntax-2">'MERN'</span>, <span class="syntax-2">'Next.js'</span>, <span class="syntax-2">'Cloud'</span>];</p>
+                    <p class="pl-6">}</p>
+                    <p class="pl-6"><span class="syntax-1">deploy</span>() {</p>
+                    <p class="pl-12"><span class="syntax-1">return</span> <span class="syntax-2">`Scale Initiated for ${this.vision}`</span>;</p>
+                    <p class="pl-6">}</p>
+                    <p>}</p>
+                    <p class="mt-4"><span class="syntax-1">const</span> <span class="syntax-3">TechFixer</span> = <span class="syntax-1">new</span> <span class="syntax-3">DigitalAsset</span>(<span class="syntax-2">'Your Business'</span>);</p>
+                    <p><span class="syntax-3">TechFixer</span>.<span class="syntax-1">deploy</span>();</p>
+                </div>
+                <div class="p-6 bg-purple-600/10 border-t border-purple-500/20 text-center">
+                    <p class="boss-font text-[9px] tracking-widest text-purple-400">BUILDING_THE_FUTURE_OF_IT</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-32 py-10 border-y border-white/5 overflow-hidden flex gap-20 opacity-30 boss-font text-[10px] whitespace-nowrap">
+            <span>REACT.JS</span> <span>•</span> <span>NODE.JS</span> <span>•</span> <span>TYPESCRIPT</span> <span>•</span> <span>MONGODB</span> <span>•</span> <span>NEXT.JS</span> <span>•</span> <span>PYTHON</span> <span>•</span> <span>DOCKER</span>
+        </div>
+
+        <div class="mt-32 text-center">
+            <a href="https://wa.me/923351696907?text=Build_Inquiry" class="inline-block border border-purple-500 text-purple-500 font-black boss-font text-[10px] px-16 py-6 hover:bg-purple-500 hover:text-black transition-all">
+                START_NEW_PROJECT
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
+        Tech Fixer // Engineering Division // 2026
+    </footer>
+
+</body>
+</html>

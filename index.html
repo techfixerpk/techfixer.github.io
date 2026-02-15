@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH FIXER | FIX • BUILD • GROW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;700&display=swap');
+        
+        :root { --neon: #00f2ff; --bg: #010101; --panel: rgba(255, 255, 255, 0.03); }
+        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; }
+
+        /* 🌌 HYPER-GRID BACKGROUND */
+        .max-ui-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(0, 242, 255, 0.07) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 242, 255, 0.07) 1px, transparent 1px);
+            background-size: 80px 80px; z-index: -2;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 90%);
+        }
+
+        /* 🌫️ RADIAL OVERLAY */
+        .radial-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 242, 255, 0.15) 0%, transparent 50%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* 🚨 TACTICAL SCANLINE */
+        .scan {
+            width: 100%; height: 100px; 
+            background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent);
+            position: fixed; top: -100px; left: 0; z-index: 100;
+            animation: move-scan 6s linear infinite; pointer-events: none;
+        }
+        @keyframes move-scan { 0% { top: -100px; } 100% { top: 110%; } }
+
+        /* 💎 PREMIUM NAV TAGS */
+        .nav-tag {
+            font-family: 'Syncopate'; font-size: 8px; letter-spacing: 3px;
+            opacity: 0.4; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .nav-tag:hover, .nav-active { opacity: 1; color: var(--neon); text-shadow: 0 0 15px var(--neon); }
+        .nav-tag::before {
+            content: ''; position: absolute; bottom: -8px; left: 50%; width: 0; height: 2px;
+            background: var(--neon); transition: 0.3s; transform: translateX(-50%);
+        }
+        .nav-tag:hover::before, .nav-active::before { width: 100%; }
+
+        /* 🧬 MAX-LEVEL CARDS */
+        .max-ui-card {
+            background: var(--panel); border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px); transition: 0.5s;
+            position: relative; overflow: hidden;
+        }
+        .max-ui-card:hover {
+            border-color: var(--neon); background: rgba(0, 242, 255, 0.03);
+            transform: scale(1.02); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .card-accent {
+            position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon); opacity: 0; transition: 0.3s;
+        }
+        .max-ui-card:hover .card-accent { opacity: 1; }
+
+        .hardware-icon {
+            font-size: 2rem; color: #1a1a1a; transition: 0.4s;
+        }
+        .max-ui-card:hover .hardware-icon { color: var(--neon); transform: rotate(10deg); }
+    </style>
+</head>
+<body>
+
+    <div class="max-ui-grid"></div>
+    <div class="radial-glow"></div>
+    <div class="scan"></div>
+
+    <nav class="fixed top-0 w-full z-[1000] border-b border-white/5 bg-black/80 backdrop-blur-xl px-10 py-7 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <img src="assets/logo.png" alt="TECH FIXER" class="h-7">
+            <span class="boss-font text-[10px] tracking-tighter italic">TECH <span class="text-cyan-400">FIXER</span></span>
+        </div>
+        
+        <div class="flex gap-10 items-center">
+            <a href="index.html" class="nav-tag nav-active">HUB</a>
+            <a href="profile.html" class="nav-tag">PROFILE</a>
+            <a href="products.html" class="nav-tag">PRODUCTS</a>
+            <a href="services.html" class="nav-tag">SERVICES</a>
+            <a href="contact.html" class="nav-tag border border-cyan-400/50 px-5 py-2 hover:bg-cyan-400 hover:text-black">CONTACT_UPLINK</a>
+        </div>
+    </nav>
+
+    <main class="pt-52 container mx-auto px-6">
+        
+        <header class="mb-40">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-[1px] w-12 bg-cyan-400"></div>
+                <p class="font-mono text-cyan-400 text-[10px] tracking-[10px] uppercase">Agency_Protocol_Active</p>
+            </div>
+            <h1 class="boss-font text-5xl md:text-9xl font-black italic leading-[0.85] mb-8">
+                FIX_BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
+            </h1>
+            <p class="text-zinc-500 max-w-xl text-lg font-light">
+                Engineering high-performance solutions across the hardware/software divide. Your vision, stabilized and scaled.
+            </p>
+        </header>
+
+        <div class="grid lg:grid-cols-3 gap-10 mb-48">
+            <a href="fix.html" class="max-ui-card p-12 group">
+                <div class="card-accent"></div>
+                <p class="font-mono text-[9px] text-zinc-600 mb-10 tracking-[5px]">NODE_01</p>
+                <h3 class="boss-font text-2xl mb-4 italic">FIX.</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Optimization of broken systems and technical audits.</p>
+                <i class="fas fa-chevron-right text-cyan-400"></i>
+            </a>
+
+            <a href="build.html" class="max-ui-card p-12 group">
+                <div class="card-accent"></div>
+                <p class="font-mono text-[9px] text-zinc-600 mb-10 tracking-[5px]">NODE_02</p>
+                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">BUILD.</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Custom software engineering and asset deployment.</p>
+                <i class="fas fa-chevron-right text-cyan-400"></i>
+            </a>
+
+            <a href="grow.html" class="max-ui-card p-12 group">
+                <div class="card-accent"></div>
+                <p class="font-mono text-[9px] text-zinc-600 mb-10 tracking-[5px]">NODE_03</p>
+                <h3 class="boss-font text-2xl mb-4 italic">GROW.</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Market authority and technical SEO dominance.</p>
+                <i class="fas fa-chevron-right text-cyan-400"></i>
+            </a>
+        </div>
+
+        <section class="pb-32">
+            <div class="flex justify-between items-end mb-16 border-b border-white/5 pb-8">
+                <h2 class="boss-font text-3xl italic">LATEST_HARDWARE</h2>
+                <a href="products.html" class="font-mono text-[9px] text-cyan-400 border border-cyan-400/30 px-4 py-2 hover:bg-cyan-400 hover:text-black transition">SYNC_FULL_CATALOG</a>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <div class="max-ui-card p-8">
+                    <div class="flex justify-between mb-12">
+                        <i class="fas fa-microchip hardware-icon"></i>
+                        <span class="font-mono text-[8px] border border-cyan-400/50 text-cyan-400 px-2 py-1 h-fit">CPU</span>
+                    </div>
+                    <h4 class="boss-font text-[12px] mb-2 tracking-tighter uppercase">CORE_X_ENGINE</h4>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-cyan-400 font-bold">$450</span>
+                        <span class="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">In_Stock</span>
+                    </div>
+                </div>
+
+                <div class="max-ui-card p-8">
+                    <div class="flex justify-between mb-12">
+                        <i class="fas fa-memory hardware-icon"></i>
+                        <span class="font-mono text-[8px] border border-cyan-400/50 text-cyan-400 px-2 py-1 h-fit">GPU</span>
+                    </div>
+                    <h4 class="boss-font text-[12px] mb-2 tracking-tighter uppercase">NEON_STRIKE_Z</h4>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-cyan-400 font-bold">$899</span>
+                        <span class="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">Limited</span>
+                    </div>
+                </div>
+
+                <div class="max-ui-card p-8">
+                    <div class="flex justify-between mb-12">
+                        <i class="fas fa-server hardware-icon"></i>
+                        <span class="font-mono text-[8px] border border-cyan-400/50 text-cyan-400 px-2 py-1 h-fit">SERVER</span>
+                    </div>
+                    <h4 class="boss-font text-[12px] mb-2 tracking-tighter uppercase">QUANTUM_HUB</h4>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-cyan-400 font-bold">$1200</span>
+                        <span class="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">Active</span>
+                    </div>
+                </div>
+
+                <div class="max-ui-card p-8">
+                    <div class="flex justify-between mb-12">
+                        <i class="fas fa-desktop hardware-icon"></i>
+                        <span class="font-mono text-[8px] border border-cyan-400/50 text-cyan-400 px-2 py-1 h-fit">RIG</span>
+                    </div>
+                    <h4 class="boss-font text-[12px] mb-2 tracking-tighter uppercase">TECH FIXER</h4>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-cyan-400 font-bold">$2500</span>
+                        <span class="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">Custom</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-white/5 text-center bg-black">
+        <p class="font-mono text-[8px] tracking-[15px] opacity-20 uppercase">Tech Fixer // Fix Build Grow // Pindi_Islamabad_2026</p>
+    </footer>
+
+</body>
+</html>

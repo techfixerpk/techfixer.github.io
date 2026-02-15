@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Fixer | IT Fixes & Digital Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
+        :root { --neon: #00f2ff; --bg: #030303; }
+        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; }
+        
+        /* Glassmorphism Cards */
+        .service-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            border-color: var(--neon);
+            transform: translateY(-8px);
+            background: rgba(0, 242, 255, 0.02);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Photo Asset Styling */
+        .ceo-photo {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(1);
+            transition: 0.8s;
+        }
+        .ceo-photo:hover { filter: grayscale(0); }
+
+        .nav-logo { height: 40px; transition: 0.3s; }
+        .nav-logo:hover { filter: drop-shadow(0 0 8px var(--neon)); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-[100] bg-black/80 backdrop-blur-lg border-b border-white/5 px-10 py-5 flex justify-between items-center">
+        <a href="index.html"><img src="assets/logo.png" alt="Logo" class="nav-logo"></a>
+        <div class="hidden lg:flex gap-10 font-mono text-[9px] tracking-[4px] uppercase">
+            <a href="index.html" class="opacity-40 hover:opacity-100 transition">Hub</a>
+            <a href="products.html" class="opacity-40 hover:opacity-100 transition">Inventory</a>
+            <span class="text-cyan-400">Services_Center</span>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-20 container mx-auto px-6">
+        
+        <div class="grid lg:grid-cols-12 gap-16 items-start mb-32">
+            <div class="lg:col-span-7">
+                <p class="font-mono text-cyan-400 text-xs tracking-[8px] uppercase mb-4 italic">// Chief_Technical_Officer</p>
+                <h1 class="boss-font text-6xl md:text-8xl font-black italic leading-[0.85] mb-8">
+                    FAHAD UMAR<br><span class="text-transparent" style="-webkit-text-stroke: 1.5px var(--neon);">MALIK.</span>
+                </h1>
+                <p class="text-zinc-500 text-lg max-w-xl leading-relaxed">
+                    Dedicated to repairing hardware infrastructure and scaling digital footprints. We provide high-end IT fixes and result-driven software development to ensure your business stays at the top of the search results.
+                </p>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <img src="assets/your-photo.png" alt="Fahad Umar Malik" class="ceo-photo">
+                <div class="absolute -bottom-6 -right-6 bg-cyan-400 text-black p-6 boss-font text-xs uppercase italic font-black">
+                    Verified_Node
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-32">
+            
+            <div class="service-card p-12">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-microchip text-4xl text-cyan-400"></i>
+                    <span class="font-mono text-[10px] opacity-20">01</span>
+                </div>
+                <h3 class="boss-font text-lg mb-4 italic">IT_INFRA_FIXES</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Hardware diagnostics, chip-level repairs, and network infrastructure maintenance. We fix what others call "impossible".</p>
+            </div>
+
+            <div class="service-card p-12">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-terminal text-4xl text-cyan-400"></i>
+                    <span class="font-mono text-[10px] opacity-20">02</span>
+                </div>
+                <h3 class="boss-font text-lg mb-4 italic">SOFT_DEV_PIPELINE</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Custom web applications and software solutions built for performance, security, and scalability.</p>
+            </div>
+
+            <div class="service-card p-12">
+                <div class="flex justify-between items-center mb-10">
+                    <i class="fas fa-search-location text-4xl text-cyan-400"></i>
+                    <span class="font-mono text-[10px] opacity-20">03</span>
+                </div>
+                <h3 class="boss-font text-lg mb-4 italic">SEO_&_GEO_RANKING</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Optimizing your digital presence for local (GEO) search dominance and global search engine visibility.</p>
+            </div>
+
+            <div class="service-card p-12">
+                <div class="flex justify-between items-center mb-10">
+                    <i class="fas fa-chart-pie text-4xl text-cyan-400"></i>
+                    <span class="font-mono text-[10px] opacity-20">04</span>
+                </div>
+                <h3 class="boss-font text-lg mb-4 italic">BUSINESS_SCALING</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed">Establishing a robust digital presence through strategic branding and authority-driven marketing.</p>
+            </div>
+
+        </div>
+
+        <div class="text-center bg-zinc-900/30 py-20 border border-white/5 rounded-sm">
+            <h2 class="boss-font text-2xl mb-10">READY TO SCALE YOUR<br><span class="text-cyan-400">DIGITAL ASSETS?</span></h2>
+            <a href="https://wa.me/923351696907?text=Hi%20Fahad,%20I%20want%20to%20discuss%20IT%20Fixes/SEO%20Services." class="bg-white text-black px-12 py-5 boss-font text-[10px] font-black hover:bg-cyan-400 transition-all">
+                INITIATE_UPLINK
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="py-12 text-center opacity-10 font-mono text-[8px] tracking-[15px] uppercase">
+        Tech Fixer // IT & Digital Growth Terminal // 2026
+    </footer>
+
+</body>
+</html>

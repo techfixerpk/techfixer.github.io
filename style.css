@@ -1,0 +1,176 @@
+/* TECH FIXER - MASTER CSS (2026 EDITION)
+   DESIGNER: FAHAD UMAR MALIK (IBM CERTIFIED)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+:root {
+    --primary-cyan: #00f2ff;
+    --primary-blue: #0062ff;
+    --bg-black: #030303;
+    --glass-white: rgba(255, 255, 255, 0.03);
+    --neon-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: white;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- 1. Background "Matrix" Grid Effect --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05), transparent 80%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    z-index: -1;
+}
+
+/* --- 2. High-End Glassmorphism Navigation --- */
+.nav-master {
+    background: rgba(3, 3, 3, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- 3. The "Impossible" Gradient Text --- */
+.heavy-text {
+    background: linear-gradient(135deg, #fff 0%, var(--primary-cyan) 50%, var(--primary-blue) 100%);
+    background-size: 200% auto;
+    background-image: linear-gradient(90deg, #00f2ff, #0062ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: flow 5s ease infinite;
+    font-weight: 900;
+}
+
+@keyframes flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- 4. Cyber-Card (For FIX, BUILD, GROW) --- */
+.cyber-card {
+    background: var(--glass-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cyber-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--primary-cyan), transparent 30%);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.cyber-card:hover::before {
+    opacity: 1;
+}
+
+.cyber-card:hover {
+    transform: scale(1.02) translateY(-10px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+}
+
+/* Inner content of card to stay above animation */
+.card-content {
+    position: relative;
+    background: #080808;
+    border-radius: 20px;
+    padding: 1.5rem;
+    height: 100%;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- 5. Magnetic Button --- */
+.mag-btn {
+    background: white;
+    color: black;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.mag-btn:hover {
+    background: var(--primary-cyan);
+    box-shadow: 0 0 25px var(--primary-cyan);
+    transform: scale(1.05);
+}
+
+/* --- 6. Scroll Progress Bar --- */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-cyan), var(--primary-blue));
+    z-index: 1001;
+}
+/* Ensure this is in your style.css */
+.heavy-text {
+    background-image: linear-gradient(90deg, #00f2ff, #0062ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+.cyber-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+    border-radius: 20px;
+}
+
+.cyber-card:hover {
+    border-color: #00f2ff;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+    transform: translateY(-10px);
+}

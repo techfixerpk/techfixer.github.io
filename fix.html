@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIX | PERFORMANCE OPTIMIZATION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
+        
+        :root { --neon: #00f2ff; --warning: #ffcc00; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; }
+        .boss-font { font-family: 'Syncopate', sans-serif; }
+
+        /* Scanning UI Element */
+        .analyzer-bar {
+            height: 2px;
+            background: var(--neon);
+            box-shadow: 0 0 15px var(--neon);
+            position: absolute;
+            width: 100%;
+            animation: scan-vertical 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes scan-vertical {
+            0%, 100% { top: 0%; }
+            50% { top: 100%; }
+        }
+
+        /* Diagnostic Cards */
+        .diag-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+        .diag-card:hover {
+            border-color: var(--neon);
+            background: rgba(0, 242, 255, 0.03);
+        }
+
+        .status-dot {
+            height: 8px; width: 8px;
+            background: var(--neon);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--neon);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-[150] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-5 flex justify-between items-center">
+        <a href="services.html" class="boss-font text-[9px] text-cyan-400 flex items-center gap-2 hover:tracking-widest transition-all">
+            <i class="fas fa-arrow-left"></i> BACK_TO_STRATEGY
+        </a>
+        <div class="font-mono text-[9px] text-zinc-500 uppercase">System_Status: <span class="text-cyan-400">Analyzing_Bottlenecks</span></div>
+    </nav>
+
+    <main class="pt-40 pb-32 container mx-auto px-6 max-w-6xl">
+        
+        <div class="mb-20">
+            <h1 class="boss-font text-6xl md:text-8xl italic font-black text-transparent" style="-webkit-text-stroke: 1px var(--neon);">FIX.</h1>
+            <p class="text-zinc-400 text-lg mt-4 max-w-2xl font-light">We identify digital friction. From slow loading speeds to broken conversion funnels, we fix the technical issues holding your business back.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-4 relative group rounded-lg overflow-hidden border border-white/10 h-[500px]">
+                <div class="analyzer-bar"></div>
+                <img src="assets/your-photo.png" alt="Fahad" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-110 transition-transform duration-1000">
+                <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black to-transparent w-full">
+                    <p class="boss-font text-[10px] mb-2">OPERATOR_ID</p>
+                    <p class="font-mono text-cyan-400">FAHAD_UMAR_MALIK</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 space-y-6">
+                
+                <div class="diag-card p-8 flex gap-8 items-start">
+                    <div class="text-3xl text-cyan-400"><i class="fas fa-bolt"></i></div>
+                    <div>
+                        <h3 class="boss-font text-sm mb-2 italic">Web_Performance_Optimization</h3>
+                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Fixing Core Web Vitals, minifying assets, and server-side tuning to achieve 99+ PageSpeed scores.</p>
+                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">RECOVERY_ACTIVE</span>
+                    </div>
+                </div>
+
+                <div class="diag-card p-8 flex gap-8 items-start">
+                    <div class="text-3xl text-cyan-400"><i class="fas fa-search-plus"></i></div>
+                    <div>
+                        <h3 class="boss-font text-sm mb-2 italic">Technical_SEO_Repairs</h3>
+                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Resolving indexing issues, crawl errors, and broken link architectures that prevent search engines from ranking you.</p>
+                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">AUDIT_PROTOCOL_ON</span>
+                    </div>
+                </div>
+
+                <div class="diag-card p-8 flex gap-8 items-start">
+                    <div class="text-3xl text-cyan-400"><i class="fas fa-user-shield"></i></div>
+                    <div>
+                        <h3 class="boss-font text-sm mb-2 italic">Conversion_Friction_Fix</h3>
+                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Fixing the "leaks" in your sales funnel. We analyze user behavior to fix UX flaws that cause customers to leave.</p>
+                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">UX_STABILIZATION</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-20 p-12 bg-white/5 border border-white/5 text-center">
+            <h2 class="boss-font text-xl mb-8">Is your digital system <span class="text-cyan-400">broken?</span></h2>
+            <a href="https://wa.me/923351696907?text=Technical_Audit_Request" class="inline-block bg-white text-black font-black boss-font text-[10px] px-12 py-5 hover:bg-cyan-400 transition-all">
+                INITIATE_DIAGNOSTIC_UPLINK
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
+        Tech Fixer // Systems Maintenance Node // 2026
+    </footer>
+
+</body>
+</html>
