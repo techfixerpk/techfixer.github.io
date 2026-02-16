@@ -3,215 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH FIXER | MASTER HUB v4.0 | FIX • BUILD • GROW</title>
+    <title>TECH FIXER | FIX • BUILD • GROW | 2026 OFFICIAL</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* * TECH FIXER INDUSTRIAL DESIGN SYSTEM
-         * TARGET: 1000+ LINE ARCHITECTURE
-         * THEME: DEEP VOID / NEON CYAN
-         */
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
         :root {
             --neon: #00f2ff;
-            --neon-dim: rgba(0, 242, 255, 0.1);
             --bg: #010101;
             --panel: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        /* --- GLOBAL CORE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        
         .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- MAXED UI: CUSTOM CURSOR --- */
-        #cursor { width: 10px; height: 10px; background: var(--neon); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--neon); transition: transform 0.1s; }
-        #cursor-follower { width: 40px; height: 40px; border: 1px solid var(--neon); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.15s ease-out; opacity: 0.3; }
-
-        /* --- MAXED UI: BACKGROUND GRID --- */
-        .grid-layer {
+        /* 🔳 MAXED UI: GLOBAL GRID */
+        .cyber-grid {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--neon-dim) 1px, transparent 1px),
-                linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: -10;
-            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px; z-index: -1;
+            mask-image: radial-gradient(circle at center, black, transparent 90%);
         }
 
-        /* --- MAXED UI: NAVIGATION --- */
-        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(30px); z-index: 5000; }
-        .nav-link { font-family: 'Syncopate'; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.4); position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--neon); transition: 0.3s; }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link:hover { color: var(--neon); }
-
-        /* --- MAXED UI: CARDS --- */
-        .cyber-card {
-            background: var(--panel); border: 1px solid var(--border); padding: 3.5rem;
-            position: relative; overflow: hidden; transition: var(--transition);
+        /* 🧭 NAVIGATION: FIXED CONTACT COLOR */
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); z-index: 1000; }
+        .nav-link { 
+            font-family: 'Syncopate'; font-size: 10px; letter-spacing: 3px; 
+            color: #ffffff; /* Forced White */
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
         }
-        .cyber-card:hover { border-color: var(--neon); transform: scale(1.02) translateY(-10px); background: rgba(0,242,255,0.05); }
-        .cyber-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); transition: 0.5s; }
-        .cyber-card:hover::before { left: 100%; }
+        .nav-link:hover { color: var(--neon); text-shadow: 0 0 15px var(--neon); }
 
-        /* --- BUTTONS --- */
-        .btn-glitch {
-            border: 1px solid var(--neon); padding: 15px 35px; color: var(--neon);
-            font-family: 'Syncopate'; font-size: 10px; position: relative;
-            background: transparent; overflow: hidden; transition: 0.3s;
+        /* 🖼️ LOGO MAXIMIZATION */
+        .main-logo { width: 280px; height: auto; filter: drop-shadow(0 0 20px rgba(0,242,255,0.2)); transition: 0.5s; }
+        .main-logo:hover { transform: scale(1.05); filter: drop-shadow(0 0 30px var(--neon)); }
+
+        /* 📦 BOX MODULES */
+        .node-card {
+            background: var(--panel); border: 1px solid var(--border); padding: 4rem 3rem;
+            position: relative; overflow: hidden; transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .btn-glitch:hover { background: var(--neon); color: black; box-shadow: 0 0 30px var(--neon); }
+        .node-card:hover { border-color: var(--neon); background: rgba(0, 242, 255, 0.04); transform: translateY(-15px); }
+        .node-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon), transparent);
+            transition: 0.5s;
+        }
+        .node-card:hover::before { left: 100%; }
 
-        /* --- FORM SUCCESS STATE --- */
-        .form-success { border-color: #00ff88 !important; }
-        .success-msg { color: #00ff88; font-size: 10px; margin-top: 10px; display: none; }
+        /* 📱 ALL DEVICES OPTIMIZATION (Responsive Text) */
+        @media (max-width: 768px) {
+            .hero-text { font-size: 15vw !important; }
+            .main-logo { width: 180px; }
+        }
 
-        /* --- ANIMATIONS --- */
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { display: flex; animation: marquee 20s linear infinite; }
+        /* 🔘 BUTTON GLITCH */
+        .btn-core {
+            border: 1px solid var(--neon); padding: 20px 40px; color: var(--neon);
+            font-family: 'Syncopate'; font-size: 11px; background: transparent;
+            transition: 0.4s; cursor: pointer; text-transform: uppercase;
+        }
+        .btn-core:hover { background: var(--neon); color: #000; box-shadow: 0 0 40px var(--neon); }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
-    <div class="grid-layer"></div>
+    <div class="cyber-grid"></div>
 
-    <nav class="fixed top-0 w-full py-8 px-12 flex justify-between items-center">
+    <nav class="fixed top-0 w-full py-6 px-10 flex justify-between items-center bg-black/50">
         <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-cyan-400 flex items-center justify-center rounded-sm">
-                <span class="text-black boss-font text-xl">T</span>
-            </div>
-            <span class="boss-font tracking-tighter text-lg">TECH <span class="text-cyan-400">FIXER</span></span>
+            <span class="boss-font text-xs tracking-widest text-zinc-500">Node_ID: <span class="text-white">TF_2026</span></span>
         </div>
-        <div class="hidden lg:flex items-center gap-10">
+        <div class="hidden md:flex gap-12 items-center">
             <a href="profile.html" class="nav-link">PROFILE</a>
             <a href="services.html" class="nav-link">SERVICES</a>
             <a href="products.html" class="nav-link">PRODUCTS</a>
-            <a href="contact.html" class="nav-link text-cyan-400">CONTACT</a>
-        </div>
+            <a href="contact.html" class="nav-link">CONTACT</a> </div>
+        <a href="https://wa.me/923351696907" class="btn-core !py-2 !px-5 text-[9px]">Uplink_WA</a>
     </nav>
 
-    <main class="pt-60 px-12">
-        <section class="mb-40">
-            <div class="flex items-center gap-4 mb-10 opacity-50">
-                <div class="h-px w-20 bg-white"></div>
-                <p class="mono text-xs tracking-widest">SYSTEM_VERSION_4.0.2</p>
-            </div>
-            <h1 class="boss-font text-7xl md:text-[11rem] leading-[0.85] italic mb-16">
-                ENGINEER <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">EXCELLENCE.</span>
-            </h1>
-        </section>
-
-        <section class="grid lg:grid-cols-3 gap-8 mb-40">
-            <div class="cyber-card group" onclick="location.href='fix.html'">
-                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">01 // DEPLOY</p>
-                <h2 class="boss-font text-4xl mb-6 italic">FIX.</h2>
-                <p class="text-zinc-500 mb-12 text-sm leading-loose">Advanced hardware diagnostics and surgical system restoration. We repair what others can't.</p>
-                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
-            </div>
-
-            <div class="cyber-card group" onclick="location.href='build.html'">
-                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">02 // CONSTRUCT</p>
-                <h2 class="boss-font text-4xl mb-6 italic">BUILD.</h2>
-                <p class="text-zinc-500 mb-12 text-sm leading-loose">Custom neural workstations and specialized software environments built for high-tier performance.</p>
-                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
-            </div>
-
-            <div class="cyber-card group" onclick="location.href='grow.html'">
-                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">03 // SCALE</p>
-                <h2 class="boss-font text-4xl mb-6 italic">GROW.</h2>
-                <p class="text-zinc-500 mb-12 text-sm leading-loose">Digital authority scaling and strategic technical dominance for industrial market growth.</p>
-                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
-            </div>
-        </section>
-
-        <section class="pb-40">
-            <div class="grid lg:grid-cols-2 gap-20">
-                <div>
-                    <h3 class="boss-font text-5xl mb-10">GET_IN_TOUCH</h3>
-                    <p class="text-zinc-500 max-w-md mono text-sm mb-10">Direct uplink to techfixerpk@gmail.com. Response window: < 24H.</p>
-                    <div class="flex gap-10">
-                        <div class="p-6 border border-white/5 bg-white/5 w-full">
-                            <p class="mono text-xs text-cyan-400 mb-2">WhatsApp</p>
-                            <p class="boss-font text-sm">+92 335 1696907</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cyber-card">
-                    <form id="contactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-8">
-                        <input type="text" name="name" id="formName" required placeholder="NAME_ENTRY" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all">
-                        <input type="email" name="email" id="formEmail" required placeholder="EMAIL_UPLINK" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all">
-                        <textarea name="message" id="formMessage" rows="4" required placeholder="DATA_PAYLOAD" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all"></textarea>
-                        
-                        <button type="submit" class="btn-glitch w-full" id="submitBtn">
-                            SEND_PAYLOAD
-                        </button>
-                        <p id="successText" class="success-msg mono">UPLINK SUCCESSFUL. FORM CLEARED.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="p-12 border-t border-white/5 flex justify-between items-center bg-black/50">
-        <p class="mono text-[10px] opacity-30">TECH_FIXER // ALL_SYSTEMS_GO_2026</p>
-        <div class="flex gap-8">
-            <a href="#" class="nav-link">INSTAGRAM</a>
-            <a href="#" class="nav-link">GITHUB</a>
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
+        <div class="mb-12 reveal">
+            <img src="logo.png" alt="TECH FIXER" class="main-logo mx-auto mb-10">
+            <div class="h-px w-32 bg-cyan-400 mx-auto mb-10"></div>
         </div>
+        
+        <h1 class="boss-font hero-text text-7xl md:text-[13rem] font-black italic leading-none mb-10">
+            FIX BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
+        </h1>
+    </header>
+
+    <section class="py-40 px-10 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="node-card group" onclick="location.href='fix.html'">
+                <div class="flex justify-between items-start mb-16">
+                    <i class="fas fa-microchip text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[9px] text-zinc-600">MOD_01</span>
+                </div>
+                <h2 class="boss-font text-3xl mb-6 italic">FIX.</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Elite-level hardware diagnostics and specialized system restoration for critical infrastructure.</p>
+                <span class="mono text-[10px] text-cyan-400 opacity-0 group-hover:opacity-100 transition">INITIALIZE_LINK &rarr;</span>
+            </div>
+
+            <div class="node-card group" onclick="location.href='build.html'">
+                <div class="flex justify-between items-start mb-16">
+                    <i class="fas fa-layer-group text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[9px] text-zinc-600">MOD_02</span>
+                </div>
+                <h2 class="boss-font text-3xl mb-6 italic">BUILD.</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Custom neural rigs and workstation architecture designed for high-end software development.</p>
+                <span class="mono text-[10px] text-cyan-400 opacity-0 group-hover:opacity-100 transition">INITIALIZE_LINK &rarr;</span>
+            </div>
+
+            <div class="node-card group" onclick="location.href='grow.html'">
+                <div class="flex justify-between items-start mb-16">
+                    <i class="fas fa-chart-line text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[9px] text-zinc-600">MOD_03</span>
+                </div>
+                <h2 class="boss-font text-3xl mb-6 italic">GROW.</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-12">Global authority scaling and strategic technical dominance for industrial market expansion.</p>
+                <span class="mono text-[10px] text-cyan-400 opacity-0 group-hover:opacity-100 transition">INITIALIZE_LINK &rarr;</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-10 bg-white/[0.01] border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-24">
+            <div>
+                <h3 class="boss-font text-5xl mb-8">SECURE_UPLINK</h3>
+                <p class="text-zinc-500 mb-12 mono text-sm leading-loose">
+                    Establishing encrypted connection to <span class="text-white">techfixerpk@gmail.com</span>. 
+                    Input your parameters below to transmit data payload.
+                </p>
+                <div class="p-8 border border-cyan-400/20 bg-cyan-400/5 rounded">
+                    <p class="mono text-[10px] text-cyan-400 mb-2 uppercase">Official_WhatsApp</p>
+                    <p class="boss-font text-xl">+92 335 1696907</p>
+                </div>
+            </div>
+
+            <div class="node-card !p-12">
+                <form id="tfContactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-10">
+                    <div class="relative">
+                        <input type="text" name="name" required placeholder="IDENT_NAME" class="w-full bg-transparent border-b border-zinc-800 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all placeholder:text-zinc-700">
+                    </div>
+                    <div class="relative">
+                        <input type="email" name="email" required placeholder="IDENT_EMAIL" class="w-full bg-transparent border-b border-zinc-800 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all placeholder:text-zinc-700">
+                    </div>
+                    <div class="relative">
+                        <textarea name="message" rows="4" required placeholder="DATA_PAYLOAD" class="w-full bg-transparent border-b border-zinc-800 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all placeholder:text-zinc-700"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="tfSubmit" class="btn-core w-full">TRANSMIT_PAYLOAD</button>
+                    
+                    <div id="tfStatus" class="hidden mono text-[10px] text-center mt-6 text-green-400 animate-pulse">
+                        [ SUCCESS ] PAYLOAD_TRANSMITTED. FORM_RESET_COMPLETE.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center opacity-20 hover:opacity-100 transition duration-1000">
+        <p class="mono text-[9px] tracking-[20px] uppercase">Tech_Fixer_Network_2026</p>
     </footer>
 
     <script>
-        // 1. CUSTOM CURSOR
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursor-follower');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                follower.style.left = e.clientX - 15 + 'px';
-                follower.style.top = e.clientY - 15 + 'px';
-            }, 50);
-        });
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
 
-        // 2. FORM CLEARING LOGIC (AJAX SUBMISSION)
-        const form = document.getElementById('contactForm');
-        const successText = document.getElementById('successText');
+        document.querySelectorAll('.node-card, .reveal, h1').forEach(el => observer.observe(el));
 
-        form.onsubmit = async (e) => {
+        // Form Clearing Logic
+        const tfForm = document.getElementById('tfContactForm');
+        const tfStatus = document.getElementById('tfStatus');
+        const tfBtn = document.getElementById('tfSubmit');
+
+        tfForm.onsubmit = async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = "TRANSMITTING...";
+            tfBtn.innerText = "UPLOADING...";
+            tfBtn.disabled = true;
 
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
+            const data = new FormData(tfForm);
+            const response = await fetch(tfForm.action, {
                 method: 'POST',
-                body: formData,
+                body: data,
                 headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                // CLEAR FORM FIELDS
-                form.reset(); 
-                btn.innerText = "SEND_PAYLOAD";
-                successText.style.display = "block";
-                form.classList.add('form-success');
+                tfForm.reset(); // This clears the form!
+                tfStatus.classList.remove('hidden');
+                tfBtn.innerText = "TRANSMIT_PAYLOAD";
+                tfBtn.disabled = false;
                 
-                // Remove success UI after 5 seconds
                 setTimeout(() => {
-                    successText.style.display = "none";
-                    form.classList.remove('form-success');
-                }, 5000);
+                    tfStatus.classList.add('hidden');
+                }, 6000);
             } else {
-                alert("Error in transmission.");
+                alert("Uplink Failed. Try again.");
+                tfBtn.innerText = "RETRY_TRANSMISSION";
+                tfBtn.disabled = false;
             }
         };
     </script>
