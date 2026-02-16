@@ -1,171 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL STOCK | TECH FIXER</title>
+    <title>PRODUCTS | TECH FIXER INDUSTRIAL INVENTORY</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
+
+        :root {
+            --neon: #00f2ff;
+            --bg: #010101;
+            --panel: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 242, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* --- BACKGROUND GRID --- */
+        .cyber-grid {
+            position: fixed; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -1; opacity: 0.2;
+        }
+
+        /* --- NAV --- */
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
+        .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+
+        /* --- PRODUCT CARDS --- */
+        .prod-card {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 1.5rem; transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative; overflow: hidden;
+        }
+        .prod-card:hover { border-color: var(--neon); transform: translateY(-10px); background: rgba(0,242,255,0.06); }
         
-        :root { --neon: #00f2ff; --pink: #ff007a; }
-        body { background: #050505; color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
-        
-        .boss-font { font-family: 'Syncopate', sans-serif; }
-        
-        /* Neon Row Animation */
-        .manifest-row {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .manifest-row:hover {
-            background: linear-gradient(90deg, rgba(0,242,255,0.1), transparent);
-            transform: translateX(10px);
-            border-left: 5px solid var(--neon);
-            color: var(--neon);
+        .tag {
+            font-size: 9px; font-family: 'JetBrains Mono'; padding: 4px 10px;
+            border: 1px solid var(--border); color: var(--neon);
         }
 
-        /* 3D Floating Image Preview */
-        .preview-box {
-            position: absolute;
-            right: 50px;
-            top: -20px;
-            width: 200px;
-            height: 130px;
-            border: 2px solid var(--neon);
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transform: rotateY(20deg) rotateX(10deg) scale(0.5);
-            transition: 0.5s all ease;
-            pointer-events: none;
-            z-index: 100;
-            box-shadow: 0 0 30px rgba(0,242,255,0.5);
+        /* --- FILTER BUTTONS --- */
+        .filter-btn {
+            font-family: 'Syncopate'; font-size: 10px; padding: 12px 25px;
+            border: 1px solid var(--border); color: #fff; transition: 0.4s;
         }
-        .manifest-row:hover .preview-box {
-            opacity: 1;
-            transform: rotateY(0deg) rotateX(0deg) scale(1);
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--neon); background: var(--neon); color: #000;
         }
 
-        .category-title {
-            font-size: 14px;
-            letter-spacing: 12px;
-            color: var(--pink);
-            border-bottom: 1px solid var(--pink);
-            display: inline-block;
-            margin-bottom: 30px;
-            padding-bottom: 5px;
+        .btn-buy {
+            border: 1px solid var(--neon); padding: 12px;
+            color: var(--neon); font-family: 'Syncopate'; font-size: 9px;
+            width: 100%; text-align: center; display: block; margin-top: 20px;
         }
+        .btn-buy:hover { background: var(--neon); color: #000; }
 
-        /* Glowing Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--neon); box-shadow: 0 0 10px var(--neon); }
-
-        .signal-btn {
-            font-size: 9px;
-            letter-spacing: 3px;
-            padding: 8px 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
-        .signal-btn:hover {
-            background: var(--neon);
-            color: black;
-            box-shadow: 0 0 20px var(--neon);
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[200] bg-black/80 backdrop-blur-lg border-b border-white/10 px-10 py-5 flex justify-between items-center">
-        <div class="boss-font text-xl italic uppercase tracking-tighter">
-<a href="index.html" class="boss-font text-xs tracking-tighter">TECH_<span class="text-cyan-400">FIXER</span></a>        </div>
-        <div class="flex gap-8 font-mono text-[9px] uppercase tracking-[4px]">
-            <a href="index.html" class="hover:text-cyan-400 transition">Hub</a>
-            <span class="text-cyan-400">Inventory_X</span>
-            <a href="contact.html" class="hover:text-cyan-400 transition">Order</a>
+    <div class="cyber-grid"></div>
+
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
         </div>
+        <div class="hidden lg:flex gap-10">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="profile.html" class="nav-link">PROFILE</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+        <a href="https://wa.me/923351696907" class="mono text-[10px] text-cyan-400 border border-cyan-400/30 px-4 py-2 hover:bg-cyan-400 hover:text-black transition">WHATSAPP_LIVE</a>
     </nav>
 
-    <main class="pt-40 pb-20 px-8 container mx-auto">
+    <header class="pt-40 pb-20 px-6 text-center">
+        <h1 class="boss-font text-5xl md:text-8xl italic mb-6">INVENTORY_ <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">CONTROL.</span></h1>
+        <p class="mono text-zinc-500 text-xs tracking-[10px] uppercase">Elite Hardware & Systems</p>
+    </header>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-20 px-6">
+        <button class="filter-btn active" onclick="filterProd('all')">ALL_UNITS</button>
+        <button class="filter-btn" onclick="filterProd('hardware')">HARDWARE</button>
+        <button class="filter-btn" onclick="filterProd('builds')">CUSTOM_BUILDS</button>
+        <button class="filter-btn" onclick="filterProd('software')">SOFTWARE</button>
+    </div>
+
+    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-40" id="product-container">
         
-        <div class="mb-32">
-            <p class="font-mono text-[10px] text-cyan-400 tracking-[10px] uppercase mb-4 animate-pulse">System_Online_v4.2</p>
-            <h1 class="boss-font text-6xl md:text-[10rem] font-black italic leading-none opacity-20">STOCK.</h1>
+        <div class="prod-card hardware reveal">
+            <div class="h-48 bg-zinc-900 mb-6 flex items-center justify-center border border-white/5">
+                <i class="fas fa-microchip text-5xl text-zinc-800"></i>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="tag">UNIT_001</span>
+                <span class="mono text-cyan-400 text-sm">PKR_REQUEST</span>
+            </div>
+            <h3 class="boss-font text-xl mb-3">RTX_MASTER_GPU</h3>
+            <p class="text-zinc-500 text-xs leading-relaxed mb-6">High-performance diagnostic-grade GPU for heavy neural workloads and rendering.</p>
+            <a href="https://wa.me/923351696907?text=Inquiry_RTX_Unit" class="btn-buy">ORDER_VIA_UPLINK</a>
         </div>
 
-        <div class="space-y-40">
-
-            <div>
-                <h2 class="category-title boss-font uppercase">01_PRECISION_MICE</h2>
-                <table class="w-full text-left">
-                    <tbody class="font-mono text-[11px] uppercase tracking-widest">
-                        <tr class="manifest-row group">
-                            <td class="py-8 px-4 text-zinc-700 w-24">#TF-001</td>
-                            <td class="py-8 px-4 font-bold text-white">Logitech G-Pro Superlight</td>
-                            <td class="py-8 px-4 text-cyan-400">PKR 32,500</td>
-                            <td class="py-8 px-4 text-right">
-                                <a href="https://wa.me/923351696907?text=Order:LogitechSuperlight" class="signal-btn">SIGNAL_UPLINK</a>
-                            </td>
-                            <div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/logitech%20gpro%20white%20gaming%20mouse%20neon')"></div>
-                        </tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-002</td><td class="py-8 px-4 font-bold text-white">Razer DeathAdder V3 Pro</td><td class="py-8 px-4 text-cyan-400">PKR 28,000</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/razer%20deathadder%20v3%20gaming%20mouse%20green')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-003</td><td class="py-8 px-4 font-bold text-white">Glorious Model O Wireless</td><td class="py-8 px-4 text-cyan-400">PKR 14,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/glorious%20model%20o%20honeycomb%20mouse')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-004</td><td class="py-8 px-4 font-bold text-white">Zowie EC2-C BenQ</td><td class="py-8 px-4 text-cyan-400">PKR 18,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/zowie%20ec2%20esports%20mouse')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-005</td><td class="py-8 px-4 font-bold text-white">SteelSeries Rival 3</td><td class="py-8 px-4 text-cyan-400">PKR 8,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/steelseries%20rival%203%20dark')"></div></tr>
-                    </tbody>
-                </table>
+        <div class="prod-card builds reveal">
+            <div class="h-48 bg-zinc-900 mb-6 flex items-center justify-center border border-white/5">
+                <i class="fas fa-server text-5xl text-zinc-800"></i>
             </div>
-
-            <div>
-                <h2 class="category-title boss-font uppercase">02_MECHANICAL_KEYBOARDS</h2>
-                <table class="w-full text-left">
-                    <tbody class="font-mono text-[11px] uppercase tracking-widest">
-                        <tr class="manifest-row group">
-                            <td class="py-8 px-4 text-zinc-700 w-24">#TF-101</td>
-                            <td class="py-8 px-4 font-bold text-white">Custom GMMK Pro 75%</td>
-                            <td class="py-8 px-4 text-cyan-400">PKR 45,000</td>
-                            <td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td>
-                            <div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/gmmk%20pro%20custom%20keyboard%20mechanical')"></div>
-                        </tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-102</td><td class="py-8 px-4 font-bold text-white">Corsair K70 RGB MK2</td><td class="py-8 px-4 text-cyan-400">PKR 24,000</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/corsair%20k70%20rgb%20keyboard')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-103</td><td class="py-8 px-4 font-bold text-white">HyperX Alloy Origins</td><td class="py-8 px-4 text-cyan-400">PKR 19,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/hyperx%20alloy%20origins%20keyboard')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-104</td><td class="py-8 px-4 font-bold text-white">Redragon K552 RGB</td><td class="py-8 px-4 text-cyan-400">PKR 7,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/redragon%20k552%20rgb%20lighting')"></div></tr>
-                    </tbody>
-                </table>
+            <div class="flex justify-between items-center mb-4">
+                <span class="tag">UNIT_002</span>
+                <span class="mono text-cyan-400 text-sm">PKR_START_150K</span>
             </div>
-
-            <div>
-                <h2 class="category-title boss-font uppercase">03_AUDIO_PERIPHERALS</h2>
-                <table class="w-full text-left">
-                    <tbody class="font-mono text-[11px] uppercase tracking-widest">
-                        <tr class="manifest-row group">
-                            <td class="py-8 px-4 text-zinc-700 w-24">#TF-201</td>
-                            <td class="py-8 px-4 font-bold text-white">Samsung AKG Handsfree</td>
-                            <td class="py-8 px-4 text-cyan-400">PKR 2,500</td>
-                            <td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td>
-                            <div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/akg%20earphones%20samsung%20dark')"></div>
-                        </tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-202</td><td class="py-8 px-4 font-bold text-white">Razer BlackShark V2</td><td class="py-8 px-4 text-cyan-400">PKR 15,500</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/razer%20blackshark%20v2%20headset')"></div></tr>
-                        <tr class="manifest-row group"><td class="py-8 px-4 text-zinc-700">#TF-203</td><td class="py-8 px-4 font-bold text-white">Logitech G435 Wireless</td><td class="py-8 px-4 text-cyan-400">PKR 12,000</td><td class="py-8 px-4 text-right"><button class="signal-btn">SIGNAL_UPLINK</button></td><div class="preview-box" style="background-image: url('https://image.pollinations.ai/prompt/logitech%20g435%20blue%20headset')"></div></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="text-center py-40 border-t border-white/5">
-                <div class="boss-font text-2xl opacity-10">END_OF_DATABASE_V1</div>
-                <p class="font-mono text-[8px] tracking-[10px] mt-4 text-zinc-600 uppercase">Adding_more_items_every_cycle</p>
-            </div>
-
+            <h3 class="boss-font text-xl mb-3">NEURAL_RIG_V1</h3>
+            <p class="text-zinc-500 text-xs leading-relaxed mb-6">Custom workstation optimized for AI development and surgical multi-tasking.</p>
+            <a href="https://wa.me/923351696907?text=Inquiry_Neural_Rig" class="btn-buy">ORDER_VIA_UPLINK</a>
         </div>
-    </main>
 
-    <footer class="py-10 text-center opacity-30 font-mono text-[8px] tracking-[5px] uppercase">
-        Tech Fixer // All Rights Secured // 2026
+        <div class="prod-card software reveal">
+            <div class="h-48 bg-zinc-900 mb-6 flex items-center justify-center border border-white/5">
+                <i class="fas fa-code text-5xl text-zinc-800"></i>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="tag">UNIT_003</span>
+                <span class="mono text-cyan-400 text-sm">SUBSCRIPTION</span>
+            </div>
+            <h3 class="boss-font text-xl mb-3">CORE_OPTIMIZER</h3>
+            <p class="text-zinc-500 text-xs leading-relaxed mb-6">Custom OS scripts and kernel-level optimizations for maximum system throughput.</p>
+            <a href="https://wa.me/923351696907?text=Inquiry_Software_Core" class="btn-buy">ORDER_VIA_UPLINK</a>
+        </div>
+
+        <div class="prod-card hardware reveal">
+            <div class="h-48 bg-zinc-900 mb-6 flex items-center justify-center border border-white/5">
+                <i class="fas fa-memory text-5xl text-zinc-800"></i>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="tag">UNIT_004</span>
+                <span class="mono text-cyan-400 text-sm">PKR_35K</span>
+            </div>
+            <h3 class="boss-font text-xl mb-3">ELITE_RAM_NODE</h3>
+            <p class="text-zinc-500 text-xs leading-relaxed mb-6">Low-latency high-speed memory modules for industrial-grade servers.</p>
+            <a href="https://wa.me/923351696907?text=Inquiry_RAM_Node" class="btn-buy">ORDER_VIA_UPLINK</a>
+        </div>
+
+    </section>
+
+    <footer class="py-20 px-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center bg-black/50">
+        <div class="mb-10 md:mb-0">
+            <p class="boss-font text-sm text-white mb-2">TECH_FIXER_NET</p>
+            <p class="mono text-[10px] text-zinc-600 uppercase">Fahad Umar Malik | Rawalpindi Node</p>
+        </div>
+        <div class="flex gap-10">
+            <a href="https://www.linkedin.com/in/fahad-umar-malik/" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/923351696907" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://business.facebook.com/latest/home/?asset_id=1010390342152585" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-facebook"></i></a>
+        </div>
     </footer>
 
+    <script>
+        // Filter Logic
+        function filterProd(category) {
+            const items = document.querySelectorAll('.prod-card');
+            const btns = document.querySelectorAll('.filter-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if(category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
