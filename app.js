@@ -1,105 +1,96 @@
 /**
- * TECH FIXER - ULTRA-MAX ENGINE (BLUE SLING EDITION)
- * Features: Kinetic Smooth Scroll, Blue Magnetic Sling, 3D Parallax
+ * TECH FIXER - Core Logic [v1.0]
+ * Authorized Dev: FAHAD UMAR MALIK
+ * Location: techfixerpk.github.io
  */
 
-// 1. INITIALIZE ENGINE
 document.addEventListener('DOMContentLoaded', () => {
-    initSlingCursor();
-    initSmoothScroll();
-    initMagneticElements();
-    systemBootLog();
-});
-
-// 2. BLUE SLING CURSOR (Follower with elastic "Sling" physics)
-function initSlingCursor() {
-    const cursor = document.getElementById('cursor');
-    if (!cursor) return;
-
-    let mouseX = 0, mouseY = 0; // Target position
-    let ballX = 0, ballY = 0;   // Current position
-    let speed = 0.15;           // "Sling" elasticity (Lower = more sling)
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animate() {
-        // Linear Interpolation (LERP) for the "Sling" effect
-        let distX = mouseX - ballX;
-        let distY = mouseY - ballY;
-        
-        ballX += distX * speed;
-        ballY += distY * speed;
-
-        cursor.style.left = ballX + 'px';
-        cursor.style.top = ballY + 'px';
-        
-        // Dynamic "Stretch" effect based on speed
-        const velocity = Math.sqrt(distX*distX + distY*distY);
-        const scale = Math.min(1.5, 1 + velocity / 500);
-        cursor.style.transform = `translate(-50%, -50%) scale(${scale})`;
-        
-        // High-intensity Blue Glow
-        cursor.style.boxShadow = `0 0 ${10 + velocity/10}px #00f2ff`;
-
-        requestAnimationFrame(animate);
-    }
-    animate();
-}
-
-// 3. KINETIC SMOOTH SCROLL (Sling Scroll Logic)
-function initSmoothScroll() {
-    // Custom easing function for that "Heavy/Fast" feel
-    const ease = 0.075; 
-    let current = 0;
-    let target = 0;
-
-    document.body.style.height = document.getElementById('main-container').getBoundingClientRect().height + 'px';
-
-    window.addEventListener('scroll', () => {
-        target = window.scrollY;
-    });
-
-    function smoothScroll() {
-        current = current + (target - current) * ease;
-        const main = document.getElementById('main-container');
-        if(main) {
-            main.style.transform = `translate3d(0, -${current}px, 0)`;
-        }
-        requestAnimationFrame(smoothScroll);
-    }
-    // Only enable if the device is high-performance/desktop
-    if(window.innerWidth > 1024) smoothScroll();
-}
-
-// 4. MAGNETIC UI (Elements attract to cursor)
-function initMagneticElements() {
-    const magnets = document.querySelectorAll('.max-ui-card, .nav-tag, button');
     
-    magnets.forEach((el) => {
-        el.addEventListener('mousemove', (e) => {
-            const pos = el.getBoundingClientRect();
-            const x = e.clientX - pos.left - pos.width / 2;
-            const y = e.clientY - pos.top - pos.height / 2;
+    // --- 1. SYSTEM INITIALIZATION LOGS ---
+    console.log("%c [ SYSTEM_NODE_ACTIVE ] ", "background: #00f2ff; color: #000; font-weight: bold;");
+    console.log("%c Location: techfixerpk.github.io ", "color: #00f2ff;");
+
+    // --- 2. SCROLL REVEAL PROTOCOL ---
+    // Elements with 'reveal' class will fade in on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // --- 3. DYNAMIC FORM HANDLING (FORMSPREE) ---
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMsg = document.getElementById('statusMsg');
+
+    if (contactForm) {
+        contactForm.onsubmit = async (e) => {
+            e.preventDefault();
             
-            // Pull element 20px towards mouse
-            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            el.style.borderColor = '#00f2ff';
-        });
+            // Visual feedback
+            submitBtn.innerText = "TRANSMITTING_PAYLOAD...";
+            submitBtn.style.opacity = "0.5";
+            submitBtn.disabled = true;
 
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = `translate(0px, 0px)`;
-            el.style.borderColor = '';
-        });
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Success Logic
+                    contactForm.reset();
+                    if (statusMsg) {
+                        statusMsg.classList.remove('hidden');
+                        statusMsg.innerText = "[ DATA_TRANSMITTED_SUCCESSFULLY ]";
+                    }
+                    console.log("[ FORM_SUCCESS ]: Payload sent to server.");
+                } else {
+                    throw new Error("Uplink failed.");
+                }
+            } catch (error) {
+                // Error Logic
+                if (statusMsg) {
+                    statusMsg.classList.remove('hidden');
+                    statusMsg.innerText = "[ ERROR: UPLINK_INTERRUPTED ]";
+                    statusMsg.style.color = "#ff0055";
+                }
+                console.error("[ FORM_ERROR ]:", error);
+            } finally {
+                submitBtn.innerText = "TRANSMIT_PAYLOAD";
+                submitBtn.style.opacity = "1";
+                submitBtn.disabled = false;
+                
+                // Hide status message after 6 seconds
+                setTimeout(() => {
+                    if (statusMsg) statusMsg.classList.add('hidden');
+                }, 6000);
+            }
+        };
+    }
+
+    // --- 4. NAVIGATION AUTO-BLUR ---
+    window.onscroll = () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.background = "rgba(0, 0, 0, 0.95)";
+            nav.style.boxShadow = "0 4px 30px rgba(0, 242, 255, 0.05)";
+        } else {
+            nav.style.background = "rgba(0, 0, 0, 0.85)";
+            nav.style.boxShadow = "none";
+        }
+    };
+
+    // --- 5. LOGOUT MESSAGE (EASTER EGG) ---
+    window.addEventListener('beforeunload', () => {
+        console.log("[ SYSTEM_DISCONNECTING... ]");
     });
-}
-
-// 5. SYSTEM DIAGNOSTICS (Console UI)
-function systemBootLog() {
-    const style = 'color: #00f2ff; font-weight: bold; font-family: monospace; font-size: 12px;';
-    console.log('%c[SYSTEM] TECH_FIXER_V3_ONLINE', style);
-    console.log('%c[STATUS] KINETIC_SLING_ENABLED', style);
-    console.log('%c[GFX] BLUE_REACTIVE_GLOW_ACTIVE', style);
-}
+});
