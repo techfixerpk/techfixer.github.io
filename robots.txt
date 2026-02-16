@@ -1,16 +1,21 @@
 # [ TECH FIXER // CRAWLER PROTOCOL 2026 ]
-# TARGET: https://techfixerpk.github.io/
+# ---------------------------------------
+# Website: https://techfixerpk.github.io/
 
 User-agent: *
 Allow: /
+Allow: /techfixer-global-tech-solutions-Banner.png
 
-# EXCLUDE PRIVATE ASSETS (Agar koi private folder ho)
+# Baaz bots ko unnecessary folders se rokne ke liye
 Disallow: /private/
 Disallow: /temp/
+Disallow: /cgi-bin/
 
-# SITEMAP UPLINK
+# Crawl Delay (Taki server par bojh na paray)
+Crawl-delay: 1
+
+# Sitemaps (Google/Bing ko rasta dikhane ke liye)
 Sitemap: https://techfixerpk.github.io/sitemap.xml
 
-# HOSTING ORIGIN
+# Hosting Origin
 Host: https://techfixerpk.github.io
-
