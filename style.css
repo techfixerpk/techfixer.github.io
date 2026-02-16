@@ -190,7 +190,7 @@ body::before {
                                         width: 100%;
                                             }
 
-                                                .container, .main, section {
+                                                section {
                                                         width: 90% !important; /* Aapne 90% kaha tha, wahi rakha hai */
                                                                 margin: 0 auto;
                                                                         float: none; /* Floats ko khatam karta hai */
@@ -260,4 +260,4 @@ body::before {
                                                                                                                                                                                                                                                                                                                                                                                                                     }
                                                                                                                                                                                                                                                                                                                                                                                                                     }
                                                                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                
