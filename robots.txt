@@ -12,4 +12,5 @@ Disallow: /temp/
 Sitemap: https://techfixerpk.github.io/sitemap.xml
 
 # HOSTING ORIGIN
-Host: techfixerpk.github.io
+Host: https://techfixerpk.github.io
+
