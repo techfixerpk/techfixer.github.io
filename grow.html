@@ -1,143 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROW | SEO & MARKET DOMINANCE</title>
+    <title>GROW | TECHNICAL SCALING & SEO NODE</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
-        
-        :root { --neon: #00f2ff; --growth-green: #00ff88; --bg: #010101; }
-        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; }
-        .boss-font { font-family: 'Syncopate', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
-        /* Growth Pulse Animation */
-        .pulse-circle {
-            position: absolute;
-            border: 1px solid var(--growth-green);
-            border-radius: 50%;
-            animation: pulse-out 4s infinite;
-            opacity: 0;
+        :root {
+            --neon: #00f2ff;
+            --bg: #010101;
+            --panel: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 242, 255, 0.15);
         }
 
-        @keyframes pulse-out {
-            0% { transform: scale(0.5); opacity: 0.8; }
-            100% { transform: scale(2.5); opacity: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .cyber-grid {
+            position: fixed; inset: 0;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 80px 80px; z-index: -1; opacity: 0.15;
         }
 
-        /* Metrics Display */
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
+
+        /* --- METRIC CARDS --- */
         .metric-card {
-            background: linear-gradient(180deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            transition: 0.4s;
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 2.5rem; transition: 0.5s;
         }
-        .metric-card:hover {
-            border-color: var(--growth-green);
-            background: rgba(0, 255, 136, 0.08);
-            transform: scale(1.05);
-        }
+        .metric-card:hover { border-color: var(--neon); background: rgba(0,242,255,0.05); }
 
-        .bar-fill {
-            height: 100%;
-            background: var(--growth-green);
-            box-shadow: 0 0 10px var(--growth-green);
-            width: 0%;
-            transition: width 2s ease-in-out;
+        .growth-arrow { font-size: 40px; color: var(--neon); margin-bottom: 20px; }
+
+        .btn-grow {
+            border: 1px solid var(--neon); padding: 15px 30px;
+            color: var(--neon); font-family: 'Syncopate'; font-size: 10px;
+            display: inline-block; transition: 0.4s; text-align: center;
         }
+        .btn-grow:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="overflow-x-hidden" onload="document.querySelectorAll('.bar-fill').forEach(bar => bar.style.width = bar.dataset.percent)">
+<body>
 
-    <nav class="fixed top-0 w-full z-[150] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-5 flex justify-between items-center">
-        <a href="services.html" class="boss-font text-[9px] text-[#00ff88] flex items-center gap-2 hover:tracking-widest transition-all">
-            <i class="fas fa-arrow-left"></i> BACK_TO_COMMAND
-        </a>
-        <div class="font-mono text-[9px] text-zinc-500 uppercase">Target: <span class="text-[#00ff88]">Market_Dominance_v2.1</span></div>
+    <div class="cyber-grid"></div>
+
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
+        <div class="hidden lg:flex gap-10">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+        <div class="mono text-[10px] text-cyan-400">STATUS: MARKET_DOMINANCE_ACTIVE</div>
     </nav>
 
-    <main class="pt-40 pb-32 container mx-auto px-6 max-w-7xl">
-        
-        <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-            <div class="max-w-2xl">
-                <h1 class="boss-font text-6xl md:text-9xl italic font-black text-transparent" style="-webkit-text-stroke: 1px var(--growth-green);">GROW.</h1>
-                <p class="text-zinc-400 text-lg mt-6">Being online isn't enough. We ensure your brand dominates the search engine results, captures local traffic, and converts attention into authority.</p>
+    <header class="pt-48 pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div class="reveal">
+                <p class="mono text-cyan-400 mb-6 text-sm tracking-[5px]">PROTOCOL_03 // SCALING</p>
+                <h1 class="boss-font text-6xl md:text-9xl italic mb-6">GROW.</h1>
+                <p class="text-zinc-500 text-lg font-light leading-relaxed">
+                    Transition from local operations to global authority. We optimize your technical infrastructure and digital presence to ensure maximum market dominance.
+                </p>
             </div>
-            <div class="relative w-32 h-32 flex items-center justify-center">
-                <div class="pulse-circle" style="animation-delay: 0s"></div>
-                <div class="pulse-circle" style="animation-delay: 1s"></div>
-                <i class="fas fa-globe text-3xl text-[#00ff88]"></i>
+            <div class="border border-white/5 p-8 bg-white/5 reveal">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="mono text-[10px] text-zinc-600">ANALYTICS_OVERLAY</span>
+                    <span class="mono text-[10px] text-cyan-400">LIVE_FEED</span>
+                </div>
+                <div class="h-32 flex items-end gap-2">
+                    <div class="bg-zinc-800 w-full h-[20%]"></div>
+                    <div class="bg-zinc-700 w-full h-[35%]"></div>
+                    <div class="bg-zinc-600 w-full h-[50%]"></div>
+                    <div class="bg-cyan-900 w-full h-[70%]"></div>
+                    <div class="bg-cyan-500 w-full h-[100%] animate-pulse"></div>
+                </div>
+                <p class="mono text-[9px] text-zinc-500 mt-6 text-center">INFRASTRUCTURE_EFFICIENCY_INCREASE: +240%</p>
             </div>
         </div>
+    </header>
 
-        <div class="grid lg:grid-cols-3 gap-8 mb-24">
+    <section class="max-w-7xl mx-auto px-6 pb-40">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div class="metric-card p-10">
-                <div class="font-mono text-[10px] text-zinc-600 mb-6 tracking-widest uppercase">Node_01 // Visibility</div>
-                <h3 class="boss-font text-sm mb-6 italic">SEO_ALGORITHM_DOMINANCE</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Proprietary search strategies to push your business to the #1 spot on competitive global and local keywords.</p>
-                <div class="h-1 bg-white/5 w-full mb-2">
-                    <div class="bar-fill" data-percent="94%"></div>
-                </div>
-                <span class="font-mono text-[9px] text-zinc-600">RANKING_EFFICIENCY: 94%</span>
+            <div class="metric-card reveal">
+                <i class="fas fa-chart-line growth-arrow"></i>
+                <h3 class="boss-font text-xl mb-4">TECHNICAL_SEO</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Beyond keywords. We optimize your site's core vitals, server response times, and indexing protocols to dominate search rankings.
+                </p>
+                <a href="https://wa.me/923351696907?text=Inquiry_Technical_SEO" class="btn-grow">INITIATE_STRATEGY</a>
             </div>
 
-            <div class="metric-card p-10">
-                <div class="font-mono text-[10px] text-zinc-600 mb-6 tracking-widest uppercase">Node_02 // Impact</div>
-                <h3 class="boss-font text-sm mb-6 italic">GEO_FENCED_AUTHORITY</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Hyper-local SEO targeting. Dominating search results in Rawalpindi, Islamabad, and specific target territories.</p>
-                <div class="h-1 bg-white/5 w-full mb-2">
-                    <div class="bar-fill" data-percent="88%"></div>
-                </div>
-                <span class="font-mono text-[9px] text-zinc-600">LOCAL_REACH: 88%</span>
+            <div class="metric-card reveal">
+                <i class="fas fa-bolt growth-arrow"></i>
+                <h3 class="boss-font text-xl mb-4">SPEED_THRUST</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Eliminating technical debt. We re-engineer your software stack and server configurations for ultra-low latency and high-speed data delivery.
+                </p>
+                <a href="https://wa.me/923351696907?text=Inquiry_Speed_Optimization" class="btn-grow">INITIATE_OPTIMIZATION</a>
             </div>
 
-            <div class="metric-card p-10">
-                <div class="font-mono text-[10px] text-zinc-600 mb-6 tracking-widest uppercase">Node_03 // Conversion</div>
-                <h3 class="boss-font text-sm mb-6 italic">DIGITAL_PRESENCE_SCALE</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Unifying your brand across all digital nodes to build high-authority trust signals that convert visitors into leads.</p>
-                <div class="h-1 bg-white/5 w-full mb-2">
-                    <div class="bar-fill" data-percent="97%"></div>
-                </div>
-                <span class="font-mono text-[9px] text-zinc-600">AUTHORITY_SCORE: 97%</span>
+            <div class="metric-card reveal">
+                <i class="fas fa-shield-alt growth-arrow"></i>
+                <h3 class="boss-font text-xl mb-4">AUTHORITY_DOMINANCE</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Building a digital fortress. We help establish your brand's technical authority through backlink architecture and secure infrastructure scaling.
+                </p>
+                <a href="https://wa.me/923351696907?text=Inquiry_Authority_Scaling" class="btn-grow">INITIATE_SCALING</a>
             </div>
 
         </div>
 
-        <div class="bg-white/5 p-12 border border-white/5 relative overflow-hidden">
-            <h2 class="boss-font text-xl mb-12">THE_GROWTH_PIPELINE</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="border-l border-growth-green pl-6">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase">Phase_01</h4>
-                    <p class="boss-font text-[9px] mt-2">AUDIT & INTEL</p>
+        <div class="mt-20 p-12 border border-white/5 bg-zinc-950/50 reveal">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="boss-font text-3xl mb-6 italic">INFRASTRUCTURE_SCALING</h2>
+                    <p class="text-zinc-500 text-sm leading-loose mb-8">
+                        As your business grows, your hardware and software must keep up. We provide the blueprint for technical expansion, from server rack deployment to multi-node network setups.
+                    </p>
+                    <ul class="mono text-[10px] text-cyan-400 space-y-4">
+                        <li>[01] SERVER_REDUNDANCY_PLANNING</li>
+                        <li>[02] LOAD_BALANCING_ARCHITECTURE</li>
+                        <li>[03] CLOUD_HYBRID_INTEGRATION</li>
+                    </ul>
                 </div>
-                <div class="border-l border-zinc-800 pl-6">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase">Phase_02</h4>
-                    <p class="boss-font text-[9px] mt-2">SEO_DEPLOYMENT</p>
-                </div>
-                <div class="border-l border-zinc-800 pl-6">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase">Phase_03</h4>
-                    <p class="boss-font text-[9px] mt-2">CONTENT_SCALE</p>
-                </div>
-                <div class="border-l border-zinc-800 pl-6">
-                    <h4 class="font-mono text-[10px] text-zinc-500 uppercase">Phase_04</h4>
-                    <p class="boss-font text-[9px] mt-2">MARKET_CAPTURE</p>
+                <div class="mono text-[11px] text-zinc-600 bg-black p-8 border border-white/10 leading-loose">
+                    [ AUTHORITY_PROTOCOL_v4.0 ]<br>
+                    > DOMAIN_RATING: INCREASING...<br>
+                    > SERVER_UPTIME: 99.99%<br>
+                    > LOAD_TIME: < 0.5s<br>
+                    > ORGANIC_TRAFFIC: SCALING...<br>
+                    > STATUS: MISSION_CRITICAL_READY
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="mt-32 text-center">
-            <a href="https://wa.me/923351696907?text=Growth_Strategy_Request" class="inline-block bg-[#00ff88] text-black font-black boss-font text-[11px] px-16 py-6 hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all">
-                COMMAND_MARKET_GROWTH
-            </a>
-        </div>
-
-    </main>
-
-    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
-        Tech Fixer // Growth & Dominance Division // 2026
+    <footer class="py-10 text-center opacity-30 mono text-[9px] tracking-[15px]">
+        GROW_PROTOCOL_NODE_2026
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
