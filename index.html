@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH FIXER | FIX • BUILD • GROW | MASTER_CONSOLE_2026</title>
+    <title>TECH FIXER | MASTER HUB v4.0 | FIX • BUILD • GROW</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* * GLOBAL DESIGN SYSTEM - TECH FIXER CORE
-         * VOLUME: 1000+ LINE ARCHITECTURE 
+        /* * TECH FIXER INDUSTRIAL DESIGN SYSTEM
+         * TARGET: 1000+ LINE ARCHITECTURE
+         * THEME: DEEP VOID / NEON CYAN
          */
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
@@ -18,207 +19,201 @@
             --neon: #00f2ff;
             --neon-dim: rgba(0, 242, 255, 0.1);
             --bg: #010101;
-            --panel: rgba(255, 255, 255, 0.02);
+            --panel: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* --- BASE RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        /* --- GLOBAL CORE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
         .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- BACKGROUND ENGINE --- */
+        /* --- MAXED UI: CUSTOM CURSOR --- */
+        #cursor { width: 10px; height: 10px; background: var(--neon); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--neon); transition: transform 0.1s; }
+        #cursor-follower { width: 40px; height: 40px; border: 1px solid var(--neon); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.15s ease-out; opacity: 0.3; }
+
+        /* --- MAXED UI: BACKGROUND GRID --- */
         .grid-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--neon-dim) 1px, transparent 1px), linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
-            background-size: 60px 60px; z-index: -10;
-            mask-image: radial-gradient(circle at center, black, transparent 85%);
+            background-image: 
+                linear-gradient(var(--neon-dim) 1px, transparent 1px),
+                linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -10;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
         }
 
-        /* --- NAVIGATION --- */
-        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(25px); z-index: 1000; transition: var(--transition); }
-        .nav-link { font-family: 'Syncopate'; font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.4); transition: var(--transition); }
-        .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+        /* --- MAXED UI: NAVIGATION --- */
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(30px); z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.4); position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--neon); transition: 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--neon); }
+
+        /* --- MAXED UI: CARDS --- */
+        .cyber-card {
+            background: var(--panel); border: 1px solid var(--border); padding: 3.5rem;
+            position: relative; overflow: hidden; transition: var(--transition);
+        }
+        .cyber-card:hover { border-color: var(--neon); transform: scale(1.02) translateY(-10px); background: rgba(0,242,255,0.05); }
+        .cyber-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); transition: 0.5s; }
+        .cyber-card:hover::before { left: 100%; }
 
         /* --- BUTTONS --- */
-        .btn-cyber {
-            border: 1px solid var(--neon); padding: 1rem 2.5rem;
-            font-family: 'Syncopate'; font-size: 10px; color: var(--neon);
-            background: transparent; cursor: pointer; transition: var(--transition);
-            display: inline-flex; align-items: center; gap: 1rem;
+        .btn-glitch {
+            border: 1px solid var(--neon); padding: 15px 35px; color: var(--neon);
+            font-family: 'Syncopate'; font-size: 10px; position: relative;
+            background: transparent; overflow: hidden; transition: 0.3s;
         }
-        .btn-cyber:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); transform: scale(1.05); }
+        .btn-glitch:hover { background: var(--neon); color: black; box-shadow: 0 0 30px var(--neon); }
 
-        /* --- UI CARDS --- */
-        .max-card {
-            background: var(--panel); border: 1px solid var(--border);
-            padding: 3rem; transition: var(--transition); position: relative; overflow: hidden;
-        }
-        .max-card:hover { border-color: var(--neon); background: rgba(0,242,255,0.03); transform: translateY(-10px); }
-        .scanner { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon); animation: scan 4s linear infinite; opacity: 0.1; }
+        /* --- FORM SUCCESS STATE --- */
+        .form-success { border-color: #00ff88 !important; }
+        .success-msg { color: #00ff88; font-size: 10px; margin-top: 10px; display: none; }
 
         /* --- ANIMATIONS --- */
-        @keyframes scan { 0% { transform: translateY(-100px); } 100% { transform: translateY(600px); } }
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- SPECIFIC MODULES --- */
-        #terminal { height: 200px; background: #000; border: 1px solid var(--border); padding: 20px; font-size: 11px; color: var(--neon); overflow: hidden; opacity: 0.7; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; animation: marquee 20s linear infinite; }
     </style>
 </head>
 <body>
 
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
     <div class="grid-layer"></div>
 
-    <nav class="fixed top-0 w-full py-8 px-12 flex justify-between items-center bg-black/60">
-        <div class="flex items-center gap-6">
-            <img src="logo.png" alt="TF_LOGO" class="h-10 hover:brightness-125 transition">
-            <span class="boss-font text-[14px] italic tracking-tighter">TECH <span class="text-cyan-400">FIXER</span></span>
+    <nav class="fixed top-0 w-full py-8 px-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-cyan-400 flex items-center justify-center rounded-sm">
+                <span class="text-black boss-font text-xl">T</span>
+            </div>
+            <span class="boss-font tracking-tighter text-lg">TECH <span class="text-cyan-400">FIXER</span></span>
         </div>
-
-        <div class="hidden lg:flex items-center gap-14">
+        <div class="hidden lg:flex items-center gap-10">
             <a href="profile.html" class="nav-link">PROFILE</a>
             <a href="services.html" class="nav-link">SERVICES</a>
             <a href="products.html" class="nav-link">PRODUCTS</a>
             <a href="contact.html" class="nav-link text-cyan-400">CONTACT</a>
-            <a href="https://wa.me/923351696907" class="btn-cyber !py-3 !px-6">UPLINK_WA</a>
         </div>
     </nav>
 
-    <section class="min-h-screen pt-52 px-12">
-        <div class="reveal active">
-            <h1 class="boss-font text-6xl md:text-[12rem] font-black italic leading-[0.8] mb-20 tracking-tighter">
-                MASTER <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">CONTROL.</span>
+    <main class="pt-60 px-12">
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10 opacity-50">
+                <div class="h-px w-20 bg-white"></div>
+                <p class="mono text-xs tracking-widest">SYSTEM_VERSION_4.0.2</p>
+            </div>
+            <h1 class="boss-font text-7xl md:text-[11rem] leading-[0.85] italic mb-16">
+                ENGINEER <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">EXCELLENCE.</span>
             </h1>
-            
-            <div class="grid lg:grid-cols-2 gap-20 items-end">
-                <p class="text-zinc-500 text-2xl font-light max-w-2xl border-l-4 border-cyan-400 pl-10">
-                    High-performance hardware engineering & custom architectural builds. Rawalpindi's primary technical uplink for software optimization and authority scaling.
-                </p>
-                <div id="terminal" class="mono rounded-lg">
-                    <div id="log"></div>
+        </section>
+
+        <section class="grid lg:grid-cols-3 gap-8 mb-40">
+            <div class="cyber-card group" onclick="location.href='fix.html'">
+                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">01 // DEPLOY</p>
+                <h2 class="boss-font text-4xl mb-6 italic">FIX.</h2>
+                <p class="text-zinc-500 mb-12 text-sm leading-loose">Advanced hardware diagnostics and surgical system restoration. We repair what others can't.</p>
+                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
+            </div>
+
+            <div class="cyber-card group" onclick="location.href='build.html'">
+                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">02 // CONSTRUCT</p>
+                <h2 class="boss-font text-4xl mb-6 italic">BUILD.</h2>
+                <p class="text-zinc-500 mb-12 text-sm leading-loose">Custom neural workstations and specialized software environments built for high-tier performance.</p>
+                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
+            </div>
+
+            <div class="cyber-card group" onclick="location.href='grow.html'">
+                <p class="mono text-cyan-400 mb-10 text-[10px] tracking-[5px]">03 // SCALE</p>
+                <h2 class="boss-font text-4xl mb-6 italic">GROW.</h2>
+                <p class="text-zinc-500 mb-12 text-sm leading-loose">Digital authority scaling and strategic technical dominance for industrial market growth.</p>
+                <div class="h-px w-full bg-white/10 group-hover:bg-cyan-400 transition"></div>
+            </div>
+        </section>
+
+        <section class="pb-40">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div>
+                    <h3 class="boss-font text-5xl mb-10">GET_IN_TOUCH</h3>
+                    <p class="text-zinc-500 max-w-md mono text-sm mb-10">Direct uplink to techfixerpk@gmail.com. Response window: < 24H.</p>
+                    <div class="flex gap-10">
+                        <div class="p-6 border border-white/5 bg-white/5 w-full">
+                            <p class="mono text-xs text-cyan-400 mb-2">WhatsApp</p>
+                            <p class="boss-font text-sm">+92 335 1696907</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <form id="contactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-8">
+                        <input type="text" name="name" id="formName" required placeholder="NAME_ENTRY" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all">
+                        <input type="email" name="email" id="formEmail" required placeholder="EMAIL_UPLINK" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all">
+                        <textarea name="message" id="formMessage" rows="4" required placeholder="DATA_PAYLOAD" class="w-full bg-transparent border-b border-white/20 py-4 focus:border-cyan-400 outline-none mono text-sm transition-all"></textarea>
+                        
+                        <button type="submit" class="btn-glitch w-full" id="submitBtn">
+                            SEND_PAYLOAD
+                        </button>
+                        <p id="successText" class="success-msg mono">UPLINK SUCCESSFUL. FORM CLEARED.</p>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="py-40 px-12">
-        <div class="flex justify-between items-end mb-20 reveal">
-            <h2 class="boss-font text-4xl italic uppercase">Operation_Protocols</h2>
-            <p class="mono text-[10px] text-zinc-600 tracking-[10px]">SYSTEM_STABLE_2026</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="max-card group reveal">
-                <div class="scanner"></div>
-                <div class="flex justify-between mb-12">
-                    <i class="fas fa-microchip text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
-                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">FIX_v1.0</span>
-                </div>
-                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">FIX.</h3>
-                <p class="text-zinc-500 text-sm leading-loose mb-10">
-                    Surgical hardware repair, system restoration, and legacy code optimization. We stabilize the broken and maximize current efficiency.
-                </p>
-                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
-            </div>
-
-            <div class="max-card group reveal" style="transition-delay: 0.2s;">
-                <div class="scanner"></div>
-                <div class="flex justify-between mb-12">
-                    <i class="fas fa-drafting-compass text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
-                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">BUILD_v2.1</span>
-                </div>
-                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">BUILD.</h3>
-                <p class="text-zinc-500 text-sm leading-loose mb-10">
-                    Custom AI workstations, neural workstations, and bespoke software frameworks tailored to your specific technical mission.
-                </p>
-                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
-            </div>
-
-            <div class="max-card group reveal" style="transition-delay: 0.4s;">
-                <div class="scanner"></div>
-                <div class="flex justify-between mb-12">
-                    <i class="fas fa-satellite-dish text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
-                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">GROW_v5.0</span>
-                </div>
-                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">GROW.</h3>
-                <p class="text-zinc-500 text-sm leading-loose mb-10">
-                    Scaling technical authority through search engine dominance, market expansion, and industrial-tier digital growth strategies.
-                </p>
-                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 border-y border-white/5 reveal">
-        <div class="flex gap-20 overflow-hidden whitespace-nowrap">
-            <div class="flex gap-20 animate-marquee italic boss-font text-5xl opacity-5">
-                <span>CORE_X_ENGINE</span> <span>NEON_STRIKE_Z</span> <span>QUANTUM_HUB</span> <span>TECH_FIXER_RIG</span>
-                <span>CORE_X_ENGINE</span> <span>NEON_STRIKE_Z</span> <span>QUANTUM_HUB</span> <span>TECH_FIXER_RIG</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact-preview" class="py-40 px-12">
-        <div class="grid lg:grid-cols-2 gap-24 reveal">
-            <div>
-                <h2 class="boss-font text-6xl italic mb-10 uppercase leading-none">Initialize <br> Contact_</h2>
-                <div class="space-y-6">
-                    <p class="mono text-zinc-500">Uplink: techfixerpk@gmail.com</p>
-                    <p class="mono text-zinc-500">Location: Islamabad/Rawalpindi, PK</p>
-                    <a href="contact.html" class="btn-cyber mt-10">GO_TO_FULL_UPLINK</a>
-                </div>
-            </div>
-            <div class="max-card">
-                <form action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-8">
-                    <input type="text" name="name" required placeholder="USER_ID" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm">
-                    <input type="email" name="email" required placeholder="EMAIL_UPLINK" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm">
-                    <textarea name="message" rows="4" required placeholder="PAYLOAD_DATA" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm"></textarea>
-                    <button type="submit" class="btn-cyber w-full">SEND_PAYLOAD</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 border-t border-white/5 px-12 flex flex-col md:flex-row justify-between items-center opacity-40">
-        <p class="mono text-[10px] tracking-[10px] uppercase">Tech_Fixer_Core_2026</p>
-        <div class="flex gap-10 mt-10 md:mt-0">
-            <a href="#" class="nav-link">Instagram</a>
-            <a href="#" class="nav-link">Github</a>
-            <a href="#" class="nav-link">WhatsApp</a>
+    <footer class="p-12 border-t border-white/5 flex justify-between items-center bg-black/50">
+        <p class="mono text-[10px] opacity-30">TECH_FIXER // ALL_SYSTEMS_GO_2026</p>
+        <div class="flex gap-8">
+            <a href="#" class="nav-link">INSTAGRAM</a>
+            <a href="#" class="nav-link">GITHUB</a>
         </div>
     </footer>
 
     <script>
-        // Terminal Animation
-        const logContent = [
-            "> Initializing Tech_Fixer_Protocol...",
-            "> Scanning hardware nodes...",
-            "> Security layer 01: ACTIVE",
-            "> Remote connection established...",
-            "> Welcome, Administrator.",
-            "> Payload delivery ready for: techfixerpk@gmail.com",
-            "> System Status: OPTIMAL"
-        ];
-        const logDiv = document.getElementById('log');
-        let idx = 0;
-        setInterval(() => {
-            const p = document.createElement('p');
-            p.className = 'mb-1';
-            p.textContent = logContent[idx % logContent.length];
-            logDiv.appendChild(p);
-            if (logDiv.children.length > 8) logDiv.removeChild(logDiv.firstChild);
-            idx++;
-        }, 2000);
-
-        // Reveal Logic
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
-            });
+        // 1. CUSTOM CURSOR
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX - 15 + 'px';
+                follower.style.top = e.clientY - 15 + 'px';
+            }, 50);
         });
+
+        // 2. FORM CLEARING LOGIC (AJAX SUBMISSION)
+        const form = document.getElementById('contactForm');
+        const successText = document.getElementById('successText');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "TRANSMITTING...";
+
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // CLEAR FORM FIELDS
+                form.reset(); 
+                btn.innerText = "SEND_PAYLOAD";
+                successText.style.display = "block";
+                form.classList.add('form-success');
+                
+                // Remove success UI after 5 seconds
+                setTimeout(() => {
+                    successText.style.display = "none";
+                    form.classList.remove('form-success');
+                }, 5000);
+            } else {
+                alert("Error in transmission.");
+            }
+        };
     </script>
 </body>
 </html>
