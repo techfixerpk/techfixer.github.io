@@ -94,3 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("[ SYSTEM_DISCONNECTING... ]");
     });
 });
+
+/* --- MOBILE MENU FIX --- */
+@media (max-width: 1024px) {
+    #nav-menu.flex {
+        display: flex !important;
+        animation: navSlideDown 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}
+
+@keyframes navSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
