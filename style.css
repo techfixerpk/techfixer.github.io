@@ -174,3 +174,58 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
     transform: translateY(-10px);
 }
+/* --- Global Fix: Is se padding width se bahar nahi niklay gi --- */
+* {
+    box-sizing: border-box;
+        margin: 0;
+            padding: 0;
+            }
+
+            /* --- Mobile Specific CSS (Jab screen 768px se kam ho) --- */
+            @media screen and (max-width: 768px) {
+                
+                    /* 1. Body and Container: Horizontal scroll khatam karne ke liye */
+                        body {
+                                overflow-x: hidden;
+                                        width: 100%;
+                                            }
+
+                                                .container, .main, section {
+                                                        width: 90% !important; /* Aapne 90% kaha tha, wahi rakha hai */
+                                                                margin: 0 auto;
+                                                                        float: none; /* Floats ko khatam karta hai */
+                                                                            }
+
+                                                                                /* 2. Flexbox Fix: Agar items side-by-side hain toh unhein upar-neeche kar dega */
+                                                                                    .row, .flex-container, nav {
+                                                                                            display: flex;
+                                                                                                    flex-direction: column !important;
+                                                                                                            align-items: center;
+                                                                                                                }
+
+                                                                                                                    /* 3. Images: Kabhi bhi screen se bahar nahi jayengi */
+                                                                                                                        img {
+                                                                                                                                max-width: 100%;
+                                                                                                                                        height: auto;
+                                                                                                                                                display: block;
+                                                                                                                                                        margin: 10px auto;
+                                                                                                                                                            }
+
+                                                                                                                                                                /* 4. Columns Fix: Agar aapne 33% ya 50% width di hai toh mobile par 100% ho jaye */
+                                                                                                                                                                    .col, .box, .sidebar, .content {
+                                                                                                                                                                            width: 100% !important;
+                                                                                                                                                                                    margin-bottom: 20px;
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                            /* 5. Typography: Fonts ko adjust karein taake parhne mein asani ho */
+                                                                                                                                                                                                h1 {
+                                                                                                                                                                                                        font-size: 28px !important;
+                                                                                                                                                                                                                text-align: center;
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                        
+                                                                                                                                                                                                                            p {
+                                                                                                                                                                                                                                    font-size: 16px !important;
+                                                                                                                                                                                                                                            line-height: 1.6;
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                
